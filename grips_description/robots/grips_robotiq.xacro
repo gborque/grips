@@ -12,7 +12,7 @@
   <!-- Import imu sensor -->
   <xacro:include filename="$(find grips_description)/urdf/imu_sensor.xacro" />
   <!-- Import robotiq s model -->
-  <xacro:include filename="$(find robotiq_s_model_visualization)/cfg/s-model_fixed_macro.xacro" />
+  <xacro:include filename="$(find robotiq_s_model_visualization)/cfg/s-model_articulated.xacro" />
   
   <property name="robot_name" value="" />
   
@@ -22,7 +22,7 @@
   <ft_sensor name="${robot_name}" parent="${robot_name}end_effector"/>
   <!-- Add the imu_sensor -->
   <imu_sensor prefix="${robot_name}" parent="${robot_name}end_effector">
-    <origin xyz="0 0.13 ${board_z_size+63.635e-3}" rpy="0 0 ${-pi/2}" />
+    <origin xyz="0 0.13 ${board_z_size+63.635e-3}" rpy="0 0 0" />
   </imu_sensor>
   <!-- Add robotiq hand -->
   <s-model_fixed prefix="${robot_name}"/>
@@ -51,6 +51,37 @@
     <plugin name="ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/grips</robotNamespace>
     </plugin>
-  </gazebo> 
+  </gazebo>
+  
+  <!--ROS P3D odometry -->
+	<gazebo>
+		<plugin name="imu_sensor_odometry" filename="libgazebo_ros_p3d.so">
+			<robotNamespace>/grips</robotNamespace>
+			<bodyName>end_effector</bodyName>
+			<topicName>imu_odom</topicName>
+			<frameName>base_link</frameName>
+			<xyzOffset>0 0 0</xyzOffset>
+			<rpyOffset>0 0 0</rpyOffset>
+			<gaussianNoise>0.0</gaussianNoise>
+			<updateRate>1000</updateRate>
+		</plugin>
+	</gazebo>
+	<!-- ROS Force Plugin -->
+	<gazebo>
+		<plugin name="ext_force_publisher" filename="libgazebo_ros_force.so">
+			<robotNamespace>/grips</robotNamespace>
+			<bodyName>end_effector</bodyName>
+			<topicName>ext_force</topicName>
+		</plugin>
+	</gazebo>
+	<!-- ROS F3D Plugin -->
+	<gazebo>
+		<plugin name="ext_force_listener" filename="libgazebo_ros_f3d.so">
+			<robotNamespace>/grips</robotNamespace>
+			<topicName>extft_data</topicName>
+			<bodyName>end_effector</bodyName>
+			<frameName>base_link</frameName>
+		</plugin>
+    </gazebo>
   
 </robot>

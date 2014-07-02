@@ -69,9 +69,10 @@
     <gazebo>
       <plugin name="imu_sensor" filename="libhector_gazebo_ros_imu.so">
         <robotNamespace>/grips</robotNamespace>
-        <updateRate>500.0</updateRate>
+        <updateRate>1000.0</updateRate>
         <topicName>imu</topicName>
         <bodyName>${prefix}imu_board</bodyName>
+        <gaussianNoise>0.0</gaussianNoise>
       </plugin>
     </gazebo>
     
