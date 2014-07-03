@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 	 *  Open csv files in order to record received data
 	 */
 	std::ofstream ftDataFile;
-	ftDataFile.open("/home/guzman/ftdata.csv", std::ofstream::out);
+	ftDataFile.open("/home/gborque/ftdata.csv", std::ofstream::out);
 	if(!ftDataFile)
 	{
 		std::cerr << "ftdata.csv could not be opened" << std::endl;
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 		ftDataFile << "Time(sec),Time(nsec),ForceX(N),ForceY(N),ForceZ(N),TorqueX(Nm),TorqueY(Nm),TorqueZ(Nm)" << std::endl;
 	}
 	std::ofstream imuDataFile;
-	imuDataFile.open("/home/guzman/imudata.csv", std::ofstream::out);
+	imuDataFile.open("/home/gborque/imudata.csv", std::ofstream::out);
 	if(!imuDataFile)
 	{
 		std::cerr << "imudata.csv could not be opened" << std::endl;
@@ -111,7 +111,7 @@ int main(int argc, char **argv)
 					<< "LinAccY(m/s2),LinAccZ(m/s2)" << std::endl;
 	}
 	std::ofstream odomDataFile;
-	odomDataFile.open("/home/guzman/odomdata.csv", std::ofstream::out);
+	odomDataFile.open("/home/gborque/odomdata.csv", std::ofstream::out);
 	if(!odomDataFile)
 	{
 		std::cerr << "odomdata.csv could not be opened" << std::endl;
@@ -123,7 +123,7 @@ int main(int argc, char **argv)
 		odomDataFile << "Time(sec),Time(nsec),pX(m),pY(m),pZ(m),qX,qY,qZ,qW" << std::endl;
 	}
 	std::ofstream extftDataFile;
-	extftDataFile.open("/home/guzman/extftdata.csv", std::ofstream::out);
+	extftDataFile.open("/home/gborque/extftdata.csv", std::ofstream::out);
 	if(!extftDataFile)
 	{
 		std::cerr << "extftdata.csv could not be opened" << std::endl;
