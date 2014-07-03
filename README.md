@@ -41,7 +41,7 @@ cd ~/catkin_ws/src
 Use the `wstool` to install the repository
 ```
 wstool init .
-wstool merge https://raw.github.com/fsuarez6/grips/grips-robotiq/grips.rosinstall
+wstool merge https://raw.github.com/gborque/grips/grips-robotiq/grips.rosinstall
 wstool update
 ``` 
 Install any missing dependencies using rosdep:
