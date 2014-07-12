@@ -106,7 +106,8 @@
     <gazebo>
       <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
         <robotNamespace>/grips</robotNamespace>
-        <updateRate>1000.0</updateRate>
+        <updateRate>500.0</updateRate>
+        <gaussianNoise>0.01</gaussianNoise>
         <topicName>ft_raw</topicName>
         <jointName>${name}WR</jointName>
       </plugin>

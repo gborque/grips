@@ -62,11 +62,12 @@
 			<frameName>base_link</frameName>
 			<xyzOffset>0 0 0</xyzOffset>
 			<rpyOffset>0 0 0</rpyOffset>
-			<gaussianNoise>0.0</gaussianNoise>
-			<updateRate>1000</updateRate>
+			<gaussianNoise>0.01</gaussianNoise>
+			<updateRate>500</updateRate>
 		</plugin>
 	</gazebo>
 	<!-- ROS Force Plugin -->
+<!--
 	<gazebo>
 		<plugin name="ext_force_publisher" filename="libgazebo_ros_force.so">
 			<robotNamespace>/grips</robotNamespace>
@@ -74,6 +75,7 @@
 			<topicName>ext_force</topicName>
 		</plugin>
 	</gazebo>
+-->
 	<!-- ROS F3D Plugin -->
 	<gazebo>
 		<plugin name="ext_force_listener" filename="libgazebo_ros_f3d.so">

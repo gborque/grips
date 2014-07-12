@@ -210,7 +210,7 @@ Visualization Manager:
           Show Trail: false
           Value: true
       Name: RobotModel
-      Robot Description: /grips_robotiq/robot_description
+      Robot Description: /grips/robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
@@ -284,7 +284,7 @@ Visualization Manager:
       Force Color: 204; 51; 51
       History Length: 1
       Name: ft_sensor
-      Topic: /grips_robotiq/ft_sensor
+      Topic: /grips/ft_raw
       Torque Color: 204; 204; 51
       Value: true
     - Alpha: 1
@@ -293,7 +293,7 @@ Visualization Manager:
       Enabled: true
       History Length: 1
       Name: imu_sensor
-      Topic: /grips_robotiq/imu_sensor
+      Topic: /grips/imu
       Value: true
   Enabled: true
   Global Options:
