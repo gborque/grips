@@ -1,0 +1,1116 @@
+<sdf version='1.4'>
+  <model name='grips'>
+    <link name='base_link'>
+      <pose>0 0 0.001 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.007 0 -0 0</pose>
+        <mass>1.208</mass>
+        <inertia>
+          <ixx>0.003</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.003</iyy>
+          <iyz>0</iyz>
+          <izz>0.006</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/collision/base.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/base.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='anchor' type='revolute'>
+      <child>base_link</child>
+      <parent>world</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <link name='manifold'>
+      <pose>0 0 0.01624 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.002 0.21 0 -0 0</pose>
+        <mass>41.111</mass>
+        <inertia>
+          <ixx>0.549</ixx>
+          <ixy>-9.556e-05</ixy>
+          <ixz>-5.871e-05</ixz>
+          <iyy>0.855</iyy>
+          <iyz>0.002</iyz>
+          <izz>0.605</izz>
+        </inertia>
+      </inertial>
+      <collision name='manifold_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/collision/manifold.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='manifold_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/manifold.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='SA' type='revolute'>
+      <child>manifold</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
+          <effort>200</effort>
+          <velocity>1.39626</velocity>
+        </limit>
+        <dynamics>
+          <damping>5</damping>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='upper_arm'>
+      <pose>0 0 0.35436 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.005 0.227 0 -0 0</pose>
+        <mass>3.592</mass>
+        <inertia>
+          <ixx>0.103</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.106</iyy>
+          <iyz>0.004</iyz>
+          <izz>0.013</izz>
+        </inertia>
+      </inertial>
+      <collision name='upper_arm_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/collision/upper_arm.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='upper_arm_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/upper_arm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='SE' type='revolute'>
+      <child>upper_arm</child>
+      <parent>manifold</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>0.523599</upper>
+          <effort>200</effort>
+          <velocity>1.13446</velocity>
+        </limit>
+        <dynamics>
+          <damping>5</damping>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='forearm'>
+      <pose>0 -0.00982 0.87603 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.155337 0.012119 0 -0 0</pose>
+        <mass>4.935</mass>
+        <inertia>
+          <ixx>0.073</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.009</iyy>
+          <iyz>0.004</iyz>
+          <izz>0.073</izz>
+        </inertia>
+      </inertial>
+      <collision name='forearm_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/collision/forearm.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='forearm_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/forearm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='linkage_tr' type='revolute'>
+      <child>forearm</child>
+      <parent>upper_arm</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1.28</lower>
+          <upper>1.0472</upper>
+          <effort>200</effort>
+          <velocity>0.872665</velocity>
+        </limit>
+        <dynamics>
+          <damping>10</damping>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='pitch'>
+      <pose>0 0.25127 0.88353 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.065 0 0 -0 0</pose>
+        <mass>0.679</mass>
+        <inertia>
+          <ixx>0.003</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0.004</iyz>
+          <izz>0.002</izz>
+        </inertia>
+      </inertial>
+      <collision name='pitch_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/collision/pitch.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='pitch_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/pitch.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='WP' type='revolute'>
+      <child>pitch</child>
+      <parent>forearm</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.581</lower>
+          <upper>1.1</upper>
+          <effort>200</effort>
+          <velocity>1.74533</velocity>
+        </limit>
+        <dynamics>
+          <damping>5</damping>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='yaw'>
+      <pose>0 0.38449 0.88353 0 -0 0</pose>
+      <inertial>
+        <pose>-0.00193811 0.10632 0.0487551 0 -0 0</pose>
+        <mass>5.558</mass>
+        <inertia>
+          <ixx>0.06019</ixx>
+          <ixy>0.000574621</ixy>
+          <ixz>0.000533597</ixz>
+          <iyy>0.0380912</iyy>
+          <iyz>-0.0122211</iyz>
+          <izz>0.0311515</izz>
+        </inertia>
+      </inertial>
+      <collision name='yaw_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/collision/yaw.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='yaw_collision_camera'>
+        <pose>0 0.095446 0.25 -4.00617e-18 0.523599 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/collision/camera.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='yaw_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/yaw.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='yaw_visual_camera'>
+        <pose>0 0.095446 0.25 -4.00617e-18 0.523599 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/camera.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/FlatBlack</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <gravity>1</gravity>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+      <sensor name='camera' type='camera'>
+        <update_rate>30</update_rate>
+        <camera name='camera'>
+          <horizontal_fov>1.39626</horizontal_fov>
+          <image>
+            <width>800</width>
+            <height>800</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>300</far>
+          </clip>
+        </camera>
+        <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>camera</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+        <pose>0 0.095446 0.25 -4.00617e-18 0.523599 1.5708</pose>
+      </sensor>
+    </link>
+    <joint name='WY' type='revolute'>
+      <child>yaw</child>
+      <parent>pitch</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.01</lower>
+          <upper>0.675</upper>
+          <effort>200</effort>
+          <velocity>2.00713</velocity>
+        </limit>
+        <dynamics>
+          <damping>5</damping>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='end_effector'>
+      <pose>-0.000787 0.575382 0.934861 0 -0 0</pose>
+      <inertial>
+        <pose>-0.0125382 0.135238 0.00297882 0 -0 0</pose>
+        <mass>1.9603</mass>
+        <inertia>
+          <ixx>0.0883996</ixx>
+          <ixy>0.00542158</ixy>
+          <ixz>-9.23495e-06</ixz>
+          <iyy>0.0575916</iyy>
+          <iyz>-5.03661e-05</iyz>
+          <izz>0.0386523</izz>
+        </inertia>
+      </inertial>
+      <collision name='end_effector_collision_finger_1_link_0'>
+        <pose>-0.00406378 0.0973332 -3.3426e-07 7.34643e-06 7.35226e-06 5.39914e-11</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_0.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_1_link_1'>
+        <pose>-0.0735557 0.212778 0.0360005 3.14159 -6.37537e-06 2.09159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_1.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_1_link_2'>
+        <pose>-0.092961 0.246607 0.0285008 3.14159 -6.37537e-06 2.09159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_2.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_1_link_3'>
+        <pose>-0.092961 0.246607 0.0360008 3.14159 -7.34643e-06 1.57159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_3.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_2_link_0'>
+        <pose>-0.00406378 0.0973332 -0.0720003 7.34643e-06 7.35226e-06 5.39914e-11</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_0.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_2_link_1'>
+        <pose>-0.0735557 0.212778 -0.0359995 3.14159 -6.37537e-06 2.09159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_1.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_2_link_2'>
+        <pose>-0.092961 0.246607 -0.0434992 3.14159 -6.37537e-06 2.09159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_2.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_2_link_3'>
+        <pose>-0.092961 0.246607 -0.0359992 3.14159 -7.34643e-06 1.57159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_3.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_middle_link_0'>
+        <pose>0.00406378 0.097333 0.036 3.14159 -7.34641e-06 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_0.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_middle_link_1'>
+        <pose>0.0735557 0.212778 3.23136e-12 9.74574e-12 -1.699e-11 1.05</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_1.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_middle_link_2'>
+        <pose>0.092961 0.246607 0.0075 9.74574e-12 -1.699e-11 1.05</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_2.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_finger_middle_link_3'>
+        <pose>0.092961 0.246607 3.89397e-12 1.56325e-14 -1.95866e-11 1.57</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/link_3.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_ft_kraft_plate'>
+        <pose>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/ft_kraft_plate.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_ft_robotiq_plate'>
+        <pose>0 0.0674 3.83899e-13 1.5708 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/ft_robotiq_plate.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_ft_sensor'>
+        <pose>0 0.0564 2.76172e-13 -3.14159 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/ft_sensor.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_ft_wrist_plate'>
+        <pose>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/ft_wrist_plate.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_imu_board'>
+        <pose>0 0.13 0.067005 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06477 0.06604 0.00337</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_imu_sensor'>
+        <pose>0 0.13 0.06944 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/adis1640x.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='end_effector_collision_palm'>
+        <pose>0 0.1214 1.44158e-12 1.95866e-11 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/collision/palm.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='end_effector_visual_finger_1_link_0'>
+        <pose>-0.0455159 0.1628 0.0360001 3.14159 -7.34643e-06 1.57159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_0.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_1_link_1'>
+        <pose>-0.0735557 0.212778 0.0360005 3.14159 -6.37537e-06 2.09159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_1.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_1_link_2'>
+        <pose>-0.092961 0.246607 0.0285008 3.14159 -6.37537e-06 2.09159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_2.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_1_link_3'>
+        <pose>-0.092961 0.246607 0.0360008 3.14159 -7.34643e-06 1.57159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_3.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_2_link_0'>
+        <pose>-0.0455159 0.1628 -0.0359999 3.14159 -7.34643e-06 1.57159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_0.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_2_link_1'>
+        <pose>-0.0735557 0.212778 -0.0359995 3.14159 -6.37537e-06 2.09159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_1.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_2_link_2'>
+        <pose>-0.092961 0.246607 -0.0434992 3.14159 -6.37537e-06 2.09159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_2.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_2_link_3'>
+        <pose>-0.092961 0.246607 -0.0359992 3.14159 -7.34643e-06 1.57159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_3.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_middle_link_0'>
+        <pose>0.0455159 0.1628 2.25247e-12 1.56325e-14 -1.95866e-11 1.57</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_0.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_middle_link_1'>
+        <pose>0.0735557 0.212778 3.23136e-12 9.74574e-12 -1.699e-11 1.05</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_1.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_middle_link_2'>
+        <pose>0.092961 0.246607 0.0075 9.74574e-12 -1.699e-11 1.05</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_2.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_finger_middle_link_3'>
+        <pose>0.092961 0.246607 3.89397e-12 1.56325e-14 -1.95866e-11 1.57</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/link_3.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_ft_kraft_plate'>
+        <pose>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/ft_kraft_plate.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_ft_robotiq_plate'>
+        <pose>0 0.0674 3.83899e-13 1.5708 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/ft_robotiq_plate.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_ft_sensor'>
+        <pose>0 0.0564 2.76172e-13 -3.14159 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/ft_sensor.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_ft_wrist_plate'>
+        <pose>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/ft_wrist_plate.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='end_effector_visual_imu_board'>
+        <pose>0 0.13 0.067005 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06477 0.06604 0.00337</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='end_effector_visual_imu_sensor'>
+        <pose>0 0.13 0.06944 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://grips_description/meshes/visual/adis1640x.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='end_effector_visual_palm'>
+        <pose>0 0.1214 1.44158e-12 1.95866e-11 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robotiq_s_model_visualization/meshes/s-model_articulated/visual/palm.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/FlatBlack</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <gravity>1</gravity>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='WR' type='revolute'>
+      <child>end_effector</child>
+      <parent>yaw</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.5</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <provide_feedback>1</provide_feedback>
+        <ode>
+          <provide_feedback>1</provide_feedback>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <plugin name='ft_sensor' filename='libgazebo_ros_ft_sensor.so'>
+      <robotNamespace>/grips</robotNamespace>
+      <updateRate>1000.0</updateRate>
+      <topicName>ft_raw</topicName>
+      <jointName>WR</jointName>
+    </plugin>
+    <plugin name='imu_sensor' filename='libhector_gazebo_ros_imu.so'>
+      <robotNamespace>/grips</robotNamespace>
+      <updateRate>1000.0</updateRate>
+      <topicName>imu</topicName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <bodyName>end_effector</bodyName>
+      <xyzOffset>0 -0.13 -0.067005</xyzOffset>
+      <rpyOffset>0 -0 0</rpyOffset>
+    </plugin>
+    <plugin name='ros_control' filename='libgazebo_ros_control.so'>
+      <robotNamespace>/grips</robotNamespace>
+    </plugin>
+    <plugin name='imu_sensor_odometry' filename='libgazebo_ros_p3d.so'>
+      <robotNamespace>/grips</robotNamespace>
+      <bodyName>end_effector</bodyName>
+      <topicName>imu_odom</topicName>
+      <frameName>base_link</frameName>
+      <xyzOffset>0 0 0</xyzOffset>
+      <rpyOffset>0 0 0</rpyOffset>
+      <gaussianNoise>0.0</gaussianNoise>
+      <updateRate>1000</updateRate>
+    </plugin>
+    <static>0</static>
+    <plugin name='ext_force_listener' filename='libgazebo_ros_f3d.so'>
+      <robotNamespace>/grips</robotNamespace>
+      <topicName>extft_data</topicName>
+      <bodyName>end_effector</bodyName>
+      <frameName>base_link</frameName>
+    </plugin>
+  </model>
+</sdf>
