@@ -5,7 +5,7 @@
 
 # External dependencies
 - git: {local-name: gazebo_ros_pkgs, uri: 'https://github.com/gborque/gazebo_ros_pkgs.git', version: development}
-
+- git: {local-name: hector_gazebo, uri: 'https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git', version: hydro-devel}
 - git: {local-name: robotiq, uri: 'https://github.com/gborque/robotiq.git', version: hydro-devel}
 - git: {local-name: ros_control, uri: 'https://github.com/ros-controls/ros_control.git', version: hydro-devel}
 - git: {local-name: ros_controllers, uri: 'https://github.com/ros-controls/ros_controllers.git', version: hydro-devel}
