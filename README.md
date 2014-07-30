@@ -47,7 +47,7 @@ wstool update
 Install any missing dependencies using rosdep:
 ```
 rosdep update
-rosdep install --from-paths . --ignore-src --rosdistro hydro
+rosdep install --from-paths . --ignore-src --rosdistro hydro -y
 ``` 
 Now compile your ROS workspace. e.g.
 ```
